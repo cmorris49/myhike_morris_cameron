@@ -98,6 +98,7 @@ function displayCardsDynamically(collection) {
       .then(allHikes=> {
           //var i = 1;  //Optional: if you want to have a unique ID for each hike
           allHikes.forEach(doc => { //iterate thru each doc
+              var docID = doc.id;
               var title = doc.data().name;       // get value of the "name" key
               var details = doc.data().details;  // get value of the "details" key
               var hikeCode = doc.data().code;    //get unique ID to each hike to be used for fetching right image
@@ -109,6 +110,7 @@ function displayCardsDynamically(collection) {
               newcard.querySelector('.card-length').innerHTML = hikeLength +"km";
               newcard.querySelector('.card-text').innerHTML = details;
               newcard.querySelector('.card-image').src = `./images/${hikeCode}.jpg`; //Example: NV01.jpg
+              newcard.querySelector('a').href = "eachHike.html?docID="+docID;
 
               //Optional: give unique ids to all elements for future use
               // newcard.querySelector('.card-title').setAttribute("id", "ctitle" + i);
